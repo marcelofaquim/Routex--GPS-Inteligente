@@ -14,9 +14,8 @@ export const colors = {
   
   // Cores funcionais
   success: '#00FF88',     // Verde - sucesso
-  warning: '#FFB800',      // Amarelo - alerta
   error: '#FF4444',       // Vermelho - erro
-  info: '#0047AB',        // Azul - informação
+  
 } as const;
 
 export type Colors = typeof colors;

@@ -9,9 +9,9 @@ router.get('/', async (require, res) => {
         //usuario_id fixo 
         const usuario_id = 1;
         const veiculos = await VeiculoModel.findByUsuario(usuario_id);
-        res.json({ sucess: true, data: veiculos });
+        res.json({ success: true, data: veiculos });
     } catch (error) {
-        res.status(500).json({ sucess: false, error: error.message });
+        res.status(500).json({ success: false, error: error.message });
     }
 });
 
