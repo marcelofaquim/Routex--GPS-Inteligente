@@ -8,6 +8,9 @@ import { colors } from '../constants/colors';
 import HomeScreen from '../screens/HomeScreen';
 import VehicleRegisterScreen from '../screens/VehicleRegisterScreen';
 import VehicleListScreen from '../screens/VehicleListScreen';
+import RouteDetailsScreen from '../screens/RouteDetailsScreen';
+import MapScreen from '../screens/MapScreen';
+import NavigationScreen from '../screens/NavigationScreen';
 
 //Tipos das rotas
 
@@ -23,7 +26,7 @@ export type RootStackParamList = {
 export default function AppNavigator () {
     return (
         <Stack.Navigator
-            initialRouteName="VehicleList"
+            initialRouteName="Home"
             screenOptions={{
                 headerStyle: { backgroundColor: colors.primary },
                 headerTintColor: colors.white,
@@ -48,9 +51,23 @@ export default function AppNavigator () {
 
             <Stack.Screen
                 name="Home"
-                component={HomeScreen}
-                options={{ title: ' Routex'}}
+                component={MapScreen}
+                options={{ headerShown: false}}
                 />    
+
+             <Stack.Screen
+                name="RouteDetails"
+                component={RouteDetailsScreen}
+                options={{ title: 'Detalhes da Rota'}}
+                
+             />   
+
+             <Stack.Screen
+                name="Navigation"
+                component={NavigationScreen}
+                options={{ headerShown: false}}
+
+             />   
 
            </Stack.Navigator>     
     );
