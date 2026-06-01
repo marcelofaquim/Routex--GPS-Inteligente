@@ -13,6 +13,7 @@ import {
 } from 'react-native';
 import { colors } from '../constants/colors';
 import AsyncStorage from '@react-native-async-storage/async-storage';
+import { Share } from 'react-native';
 
 interface Props {
     navigation: any;
@@ -175,6 +176,29 @@ export default function RouteDetailsScreen({ navigation, route }: Props) {
             </View>
         );
     }
+
+    // Função para compartilhar
+const compartilharRota = async () => {
+    try {
+        const mensagem = `🚗 ROUTEX - Rota calculada!\n\n` +
+            `De: ${origem?.nome || 'Sua localização'}\n` +
+            `Para: ${destino?.nome}\n` +
+            `Distância: ${rotaAtual.distancia} km\n` +
+            `Tempo: ${rotaAtual.duracao} min\n` +
+            `Combustível: ${rotaAtual.litros} L\n` +
+            `Custo: R$ ${rotaAtual.valor}\n\n` +
+            `Baixe o Routex e economize! 🗺️`;
+
+        await Share.share({ message: mensagem });
+    } catch (error) {
+        Alert.alert('Erro', 'Não foi possível compartilhar');
+    }
+};
+
+        // Adicionar botão no JSX:
+        <TouchableOpacity style={styles.shareButton} onPress={compartilharRota}>
+            <Text style={styles.shareButtonText}>📤 Compartilhar rota</Text>
+        </TouchableOpacity>
 
     return (
         <ScrollView style={styles.container}>
