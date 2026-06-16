@@ -14,6 +14,7 @@ import NavigationScreen from '../screens/NavigationScreen';
 import HistoryScreen from '../screens/HistoryScreen';
 import SettingsScreen from '../screens/SettingsScreen';
 import FuelPriceScreen from '../screens/FuelPriceScreen';
+import SplashScreen from '../screens/SplashScreen';
 
 // Tipos das rotas
 export type RootStackParamList = {
@@ -47,7 +48,7 @@ export default function AppNavigator() {
 
     return (
         <Stack.Navigator
-            initialRouteName="Home"
+            initialRouteName="Splash"
             screenOptions={{
                 headerStyle: { backgroundColor: colors.primary },
                 headerTintColor: colors.white,
@@ -64,9 +65,15 @@ export default function AppNavigator() {
         >
             {/* Tela principal - Mapa */}
             <Stack.Screen
+                name="Splash"
+                component={SplashScreen}
+                options={{ headerShown: false }}
+            />
+
+            <Stack.Screen
                 name="Home"
                 component={MapScreen}
-                options={{ title: 'Routex', headerShown: false }}
+                options={{ headerShown: false }}
             />
 
             {/* Veículos */}
